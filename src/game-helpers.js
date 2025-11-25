@@ -6,14 +6,14 @@
 export function checkGuess(guess, answer) {
   // This constant is a placeholder that indicates we've successfully
   // dealt with this character (it's correct, or misplaced).
-  const SOLVED_CHAR = '✓';
+  const SOLVED_CHAR = "✓";
 
   if (!guess) {
     return null;
   }
 
-  const guessChars = guess.toUpperCase().split('');
-  const answerChars = answer.split('');
+  const guessChars = guess.toUpperCase().split("");
+  const answerChars = answer.split("");
 
   const result = [];
 
@@ -22,7 +22,7 @@ export function checkGuess(guess, answer) {
     if (guessChars[i] === answerChars[i]) {
       result[i] = {
         letter: guessChars[i],
-        status: 'correct',
+        status: "correct",
       };
       answerChars[i] = SOLVED_CHAR;
       guessChars[i] = SOLVED_CHAR;
@@ -36,12 +36,12 @@ export function checkGuess(guess, answer) {
       continue;
     }
 
-    let status = 'incorrect';
+    let status = "incorrect";
     const misplacedIndex = answerChars.findIndex(
       (char) => char === guessChars[i]
     );
     if (misplacedIndex >= 0) {
-      status = 'misplaced';
+      status = "misplaced";
       answerChars[misplacedIndex] = SOLVED_CHAR;
     }
 
@@ -53,3 +53,38 @@ export function checkGuess(guess, answer) {
 
   return result;
 }
+
+/**
+ * Eulier's naive solution, made in 30min
+ */
+
+// function checkGuess(str1, str2) {
+//   let result = [];
+
+//   // guess and answer words (str1, str2) have the same lenght
+//   // iterate and compare letters from str1 to str2
+//   for (let i = 0; i < str1.length; i++) {
+//     let isLetterInSameSpot = str1[i] === str2[i];
+//     let isLetterExist = false;
+//     let data;
+
+//     // compare current letter in str1 with all of the letters in str2
+//     for (let j = 0; j < str2.length; j++) {
+//       if (str1[i] === str2[j]) {
+//         isLetterExist = true;
+//         break;
+//       }
+//     }
+
+//     data = {
+//       letter: str1[i],
+//       isLetterInSameSpot,
+//       isLetterExist,
+//     };
+//     result.push(data);
+//   }
+
+//   return result;
+// }
+
+// checkGuess("WHALE", "HELLO");

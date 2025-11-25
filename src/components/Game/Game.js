@@ -10,7 +10,8 @@ const answer = sample(WORDS);
 console.info({ answer });
 
 function Game() {
-  return (<SearchInput />
+  
+  return (<SearchInput answer={answer} />
 );
   
 }
